@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlvt8hte7hdli"]
 
 [ext_resource type="MeshLibrary" uid="uid://1fx2bgbei3l1" path="res://Scenes/Mesh Libraries/space_library.tres" id="1_jfdgh"]
+[ext_resource type="PackedScene" uid="uid://bilipkjvk540b" path="res://Scenes/Characters/Enemy/enemy.tscn" id="2_ap85k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u24iq"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,12 +21,10 @@ albedo_color = Color(0.266667, 0.266667, 0.266667, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_4y6xu"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -14.2024, -0.0692338, 22.1279, -2, 0, 1, 2, 0, -1, -12.8474, 0, 9.91447, -1, 0, 1, 1, 0, -1, -6, 0, 10, -1, 0, 1, 1, 0, -1, -6, 0, 2, -1, 0, -1, 1, 0, 1, 2, 0, 2, -1, 0, -1, 1, 0, 1, 2, 0, 6, -1, 0, 1, 1, 0, -1, 10, 0, 6, 0, 0, 0, 0, 0, 0, 10.6448, 0.0417633, -13.9875),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -14.2024, -0.0692338, 22.1279, -2, 0, 1, 2, 0, -1, -12.8474, 0, 9.91447, -1, 0, 1, 1, 0, -1, -6, 0, 10, -1, 0, 1, 1, 0, -1, -6, 0, 2, -1, 0, -1, 1, 0, 1, 2, 0, 2, -1, 0, -1, 1, 0, 1, 2, 0, 6, -1, 0, 1, 1, 0, -1, 10, 0, 6, 0, 0, 0, 0, 0, 0, 10.1643, 0.041748, -14.0297),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_m4rl4"]
 
 [node name="BaseLevel" type="Node3D"]
 
@@ -68,10 +67,14 @@ path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
 
-[node name="Enemy" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.993786, -0.000943044, -0.1113, -8.73115e-11, 0.999964, -0.00847265, 0.111304, 0.00842, 0.993751, -14.2156, -0.104153, 22.1305)
-loop = false
+[node name="Enemy" parent="Path3D" instance=ExtResource("2_ap85k")]
+transform = Transform3D(0.993902, -0.000621243, -0.110265, -5.82076e-11, 0.999984, -0.00563398, 0.110267, 0.00559963, 0.993886, -14.2024, -0.0692338, 22.1279)
+_speed = 3.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_m4rl4")
+[node name="Base" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -14)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.364567, 1, 0)
+radius = 3.0
+sides = 20

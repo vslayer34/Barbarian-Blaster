@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bilipkjvk540b"]
+[gd_scene load_steps=4 format=3 uid="uid://bilipkjvk540b"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy.cs" id="1_nmsfg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3cpu"]
+albedo_color = Color(0.568627, 0.0784314, 0.0784314, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m4rl4"]
+material = SubResource("StandardMaterial3D_r3cpu")
 
 [node name="Enemy" type="PathFollow3D"]
 transform = Transform3D(0.993786, -0.000943044, -0.1113, -8.73115e-11, 0.999964, -0.00847265, 0.111304, 0.00842, 0.993751, 0, 0, 0)
 loop = false
+script = ExtResource("1_nmsfg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
