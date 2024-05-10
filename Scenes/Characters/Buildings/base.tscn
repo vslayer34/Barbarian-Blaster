@@ -5,11 +5,19 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0dup"]
 albedo_color = Color(0.458824, 0.0980392, 0.623529, 1)
 
-[node name="Base" type="Node3D" groups=["Base"]]
+[node name="Base" type="Node3D" node_paths=PackedStringArray("BaseLabel") groups=["Base"]]
 script = ExtResource("1_o40fe")
+BaseLabel = NodePath("Label3D")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.364567, 1, 0)
 radius = 3.0
 sides = 20
 material = SubResource("StandardMaterial3D_c0dup")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+billboard = 2
+text = "Base Health"
+font_size = 500
+outline_size = 100
