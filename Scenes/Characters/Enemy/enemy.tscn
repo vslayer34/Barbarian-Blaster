@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bilipkjvk540b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m4rl4"]
+
+[node name="Enemy" type="PathFollow3D"]
+transform = Transform3D(0.993786, -0.000943044, -0.1113, -8.73115e-11, 0.999964, -0.00847265, 0.111304, 0.00842, 0.993751, 0, 0, 0)
+loop = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_m4rl4")
