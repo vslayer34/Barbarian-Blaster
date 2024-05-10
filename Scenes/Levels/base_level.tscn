@@ -19,6 +19,11 @@ glow_enabled = true
 albedo_color = Color(0.266667, 0.266667, 0.266667, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_4y6xu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -14.2156, -0.104153, 22.1305, -2, 0, 1, 2, 0, -1, -12.8474, 0, 9.91447, -1, 0, 1, 1, 0, -1, -6, 0, 10, -1, 0, 1, 1, 0, -1, -6, 0, 2, -1, 0, -1, 1, 0, 1, 2, 0, 2, -1, 0, -1, 1, 0, 1, 2, 0, 6, -1, 0, 1, 1, 0, -1, 10, 0, 6, 0, 0, 0, 0, 0, 0, 10.6448, 0.0417633, -13.9875),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
 
 [node name="BaseLevel" type="Node3D"]
 
@@ -47,3 +52,16 @@ data = {
 
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_4y6xu")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+polygon = PackedVector2Array(-1, 0, -1, 0.2, -0.8, 0.2, -0.8, 0.1, 0.8, 0.1, 0.8, 0.1, 0.8, 0.2, 1, 0.2, 1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
