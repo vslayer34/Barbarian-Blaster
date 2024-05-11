@@ -21,10 +21,23 @@ public partial class CameraRayCaster : Camera3D
         RayCastNode.TargetPosition = ProjectLocalRayNormal(_mousePosition) * _rayDistance;
         RayCastNode.ForceRaycastUpdate();
 
-        GD.PrintS(
-            $"Ray interacted with: {RayCastNode.GetCollider()}", 
-            $"Ray collision position: {RayCastNode.GetCollisionPoint()}"
-        );
-        GD.Print();
+
+        if (RayCastNode.IsColliding())
+        {
+            var collider = RayCastNode.GetCollider();
+
+            if (collider is GridMap gridMap)
+            {
+                var collisionPoint = RayCastNode.GetCollisionPoint();
+                var cellPosition = gridMap.LocalToMap(collisionPoint);
+                
+                
+                // Check if we have a cell with index 0 in the grid map
+                if(gridMap.GetCellItem(cellPosition) == 0)
+                {
+                    gridMap.SetCellItem(cellPosition, 1);
+                }
+            }
+        }
     }
 }
