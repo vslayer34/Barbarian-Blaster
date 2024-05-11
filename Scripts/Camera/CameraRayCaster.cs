@@ -1,5 +1,7 @@
+using BarbarianBlasterMono.Scripts.Helper;
 using Godot;
 using System;
+using static Godot.Input;
 
 namespace BarbarianBlasterMono.Scripts.Camera;
 public partial class CameraRayCaster : Camera3D
@@ -35,9 +37,23 @@ public partial class CameraRayCaster : Camera3D
                 // Check if we have a cell with index 0 in the grid map
                 if(gridMap.GetCellItem(cellPosition) == 0)
                 {
-                    gridMap.SetCellItem(cellPosition, 1);
+                    Input.SetDefaultCursorShape(CursorShape.PointingHand);
+
+                    if (Input.IsActionJustPressed(InputActionNames.User.CLICK))
+                    {
+                        gridMap.SetCellItem(cellPosition, 1);
+                        Input.SetDefaultCursorShape(CursorShape.Arrow);
+                    }
+                }
+                else
+                {
+                    Input.SetDefaultCursorShape(CursorShape.Arrow);
                 }
             }
+        }
+        else
+        {
+            Input.SetDefaultCursorShape(CursorShape.Arrow);   
         }
     }
 }
