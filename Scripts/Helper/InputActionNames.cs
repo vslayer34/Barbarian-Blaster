@@ -14,7 +14,10 @@ class InputActionNames
     /// </summary>
     public class User
     {
-        
+        /// <summary>
+        /// Reference to<c>"click"</c>input acion
+        /// </summary>
+        public const string CLICK = "click";
     }
 
     /// <summary>
