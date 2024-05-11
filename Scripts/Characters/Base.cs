@@ -23,7 +23,6 @@ public partial class Base : Node3D
     public override void _Ready()
     {
         _currentHealth = _maxHealth;
-        UpdateBaseLabel();
     }
 
     // Member Methods------------------------------------------------------------------------------
@@ -34,10 +33,29 @@ public partial class Base : Node3D
     public void TakeDamage()
     {
         GD.Print("I'm damaged :(");
-        _currentHealth--;
-
-        UpdateBaseLabel();
+        CurrentHealth--;
     }
 
     private void UpdateBaseLabel() => BaseLabel.Text = $"{_currentHealth}";
+
+    // Setters & Getters---------------------------------------------------------------------------
+
+    /// <summary>
+    /// Setthe current health and update the UI for the change
+    /// </summary>
+    public int CurrentHealth
+    {
+        get => _currentHealth;
+        private set
+        {
+            
+            _currentHealth = value;
+            UpdateBaseLabel();
+
+            if (_currentHealth < 1)
+            {
+                GetTree().ReloadCurrentScene();
+            }
+        }
+    }
 }
