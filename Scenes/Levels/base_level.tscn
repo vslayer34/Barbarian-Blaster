@@ -44,7 +44,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 size = Vector3(100, 2, 100)
 material = SubResource("StandardMaterial3D_ijopp")
 
-[node name="Camera3D" parent="." instance=ExtResource("1_vhbfj")]
+[node name="Camera3D" parent="." node_paths=PackedStringArray("TurretManagerNode") instance=ExtResource("1_vhbfj")]
+TurretManagerNode = NodePath("../TurretManager")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_jfdgh")
@@ -80,7 +81,7 @@ progress = 5.0
 _speed = 3.0
 
 [node name="Enemy3" parent="Path3D" instance=ExtResource("2_ap85k")]
-transform = Transform3D(0.9819, -0.000577508, -0.189399, -0.000438901, 0.999986, -0.00532452, 0.189399, 0.00531128, 0.981886, -13.8853, -0.0103137, 12.1519)
+transform = Transform3D(0.9819, -0.000577508, -0.189399, -0.0004389, 0.999986, -0.00532452, 0.189399, 0.00531128, 0.981886, -13.8853, -0.0103137, 12.1519)
 progress = 10.0
 _speed = 3.0
 
