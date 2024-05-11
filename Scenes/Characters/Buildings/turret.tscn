@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://b68uatif1lf4d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t32ng"]
+albedo_color = Color(0.101961, 0.494118, 0.0470588, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_clj1w"]
+material = SubResource("StandardMaterial3D_t32ng")
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_he84s"]
+albedo_color = Color(0.0470588, 0.317647, 0.101961, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8glsd"]
+material = SubResource("StandardMaterial3D_he84s")
+top_radius = 0.6
+bottom_radius = 0.6
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3py11"]
+albedo_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_03rqb"]
+material = SubResource("StandardMaterial3D_3py11")
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir6yj"]
+albedo_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_anbwc"]
+material = SubResource("StandardMaterial3D_ir6yj")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8j6m"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c2dlj"]
+material = SubResource("StandardMaterial3D_x8j6m")
+top_radius = 0.07
+bottom_radius = 0.07
+height = 0.3
+
+[node name="Turret" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_clj1w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CylinderMesh_8glsd")
+
+[node name="RightBarrel" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.12, 0, 0.556)
+mesh = SubResource("CylinderMesh_03rqb")
+
+[node name="RightBarrel2" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D/RightBarrel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223539, -2.38419e-07)
+mesh = SubResource("CylinderMesh_anbwc")
+skeleton = NodePath("../..")
+
+[node name="RightBarrel3" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D/RightBarrel/RightBarrel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221666, 0)
+mesh = SubResource("CylinderMesh_c2dlj")
+skeleton = NodePath("../../..")
+
+[node name="LeftBarrel" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.12, 0, 0.556)
+mesh = SubResource("CylinderMesh_03rqb")
+
+[node name="RightBarrel2" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D/LeftBarrel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223539, -2.38419e-07)
+mesh = SubResource("CylinderMesh_anbwc")
+skeleton = NodePath("../..")
+
+[node name="RightBarrel3" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D/LeftBarrel/RightBarrel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221666, 0)
+mesh = SubResource("CylinderMesh_c2dlj")
+skeleton = NodePath("../../..")
