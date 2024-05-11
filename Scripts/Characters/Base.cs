@@ -22,7 +22,7 @@ public partial class Base : Node3D
 
     public override void _Ready()
     {
-        _currentHealth = _maxHealth;
+        CurrentHealth = _maxHealth;
     }
 
     // Member Methods------------------------------------------------------------------------------
@@ -36,7 +36,14 @@ public partial class Base : Node3D
         CurrentHealth--;
     }
 
-    private void UpdateBaseLabel() => BaseLabel.Text = $"{_currentHealth}";
+    private void UpdateBaseLabel()
+    {
+        Color red = Colors.Red;
+        Color white = Colors.White;
+
+        BaseLabel.Text = $"{_currentHealth} / {_maxHealth}";
+        BaseLabel.Modulate = red.Lerp(white, (float)_currentHealth / _maxHealth);
+    }
 
     // Setters & Getters---------------------------------------------------------------------------
 
