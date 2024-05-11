@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://di0iydpu46epq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqa0d"]
+albedo_color = Color(1, 0.713726, 0.270588, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nnl3p"]
+material = SubResource("StandardMaterial3D_lqa0d")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptw2b"]
+albedo_color = Color(0.419608, 0.254902, 0.0588235, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cognm"]
+material = SubResource("StandardMaterial3D_ptw2b")
+top_radius = 0.017
+bottom_radius = 0.05
+height = 0.08
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8g1v"]
+radius = 0.072
+height = 0.245
+
+[node name="Bullet" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0746518)
+
+[node name="BulletBody" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_nnl3p")
+
+[node name="BulletCap" type="MeshInstance3D" parent="BulletBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.115178, 3.38343e-11)
+mesh = SubResource("CylinderMesh_cognm")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0366449, -1.6018e-09)
+shape = SubResource("CapsuleShape3D_i8g1v")
