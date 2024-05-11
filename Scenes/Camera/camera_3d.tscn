@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci6uyqo5067op"]
+
+[ext_resource type="Script" path="res://Scripts/Camera/CameraRayCaster.cs" id="1_2ray4"]
+
+[node name="Camera3D" type="Camera3D" node_paths=PackedStringArray("RayCastNode")]
+transform = Transform3D(1, 0, 0, 0, 0.544639, 0.838671, 0, -0.838671, 0.544639, 0, 16, 17.53)
+script = ExtResource("1_2ray4")
+RayCastNode = NodePath("RayCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
