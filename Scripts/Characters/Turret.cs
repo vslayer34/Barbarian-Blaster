@@ -1,5 +1,7 @@
 using Godot;
+using Godot.Collections;
 using System;
+using System.Linq;
 
 namespace BarbarianBlasterMono.Scripts.Characters;
 public partial class Turret : Node3D
@@ -19,6 +21,9 @@ public partial class Turret : Node3D
 
     
     private Bullet _newBullet;
+    private Path3D _enemyPath;
+
+    private Array<Node> _enemies;
 
 
 
@@ -28,6 +33,13 @@ public partial class Turret : Node3D
         ShotInterval.Timeout += OnShotInterval_Timeout;
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        _enemies = _enemyPath.GetChildren();
+        Enemy lastEnemy = _enemies.Last() as Enemy;
+
+        LookAt(lastEnemy.GlobalPosition, Vector3.Up, true);
+    }
 
     // Signal Methods------------------------------------------------------------------------------
     private void OnShotInterval_Timeout()
@@ -38,4 +50,7 @@ public partial class Turret : Node3D
         _newBullet.GlobalPosition = BulletFirePosition.GlobalPosition;
     }
 
+    // Setters and Getters-------------------------------------------------------------------------
+
+    public Path3D EnemyPath { set => _enemyPath = value; }
 }
