@@ -7,6 +7,9 @@ public partial class Turret : Node3D
     [ExportGroup("Child Nodes")]
     [Export]
     public Marker3D BulletFirePosition;
+
+    [Export]
+    public Timer ShotInterval { get; private set; }
     [ExportGroup("")]
 
     
@@ -19,11 +22,20 @@ public partial class Turret : Node3D
 
 
 
+    // Game Loop Methods---------------------------------------------------------------------------
     public override void _Ready()
     {
-        _newBullet = BulletScene.Instantiate() as Bullet;
-        _newBullet.Position = BulletFirePosition.Position;
-
-        AddChild(_newBullet);
+        ShotInterval.Timeout += OnShotInterval_Timeout;
     }
+
+
+    // Member Methods------------------------------------------------------------------------------
+    private void OnShotInterval_Timeout()
+    {
+        _newBullet = BulletScene.Instantiate() as Bullet;
+        AddChild(_newBullet);
+
+        _newBullet.GlobalPosition = BulletFirePosition.GlobalPosition;
+    }
+
 }

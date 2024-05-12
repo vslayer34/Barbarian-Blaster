@@ -46,10 +46,11 @@ top_radius = 0.07
 bottom_radius = 0.07
 height = 0.3
 
-[node name="Turret" type="Node3D" node_paths=PackedStringArray("BulletFirePosition")]
+[node name="Turret" type="Node3D" node_paths=PackedStringArray("BulletFirePosition", "ShotInterval")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_2y5f3")
 BulletFirePosition = NodePath("Marker3D")
+ShotInterval = NodePath("ShotInterval")
 BulletScene = ExtResource("2_1ibta")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -90,3 +91,6 @@ skeleton = NodePath("../../..")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.802835, 1.32024)
+
+[node name="ShotInterval" type="Timer" parent="."]
+autostart = true
