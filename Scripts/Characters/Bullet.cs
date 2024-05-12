@@ -26,6 +26,8 @@ public partial class Bullet : Area3D
 
     public override void _PhysicsProcess(double delta)
     {
+        _direction = GlobalBasis.Z;
+
         Position += _direction * _speed * (float)delta;
     }
 

@@ -45,9 +45,10 @@ public partial class Turret : Node3D
     private void OnShotInterval_Timeout()
     {
         _newBullet = BulletScene.Instantiate() as Bullet;
-        AddChild(_newBullet);
+        BulletFirePosition.AddChild(_newBullet);
 
         _newBullet.GlobalPosition = BulletFirePosition.GlobalPosition;
+        _newBullet.GlobalBasis = BulletFirePosition.GlobalBasis;
     }
 
     // Setters and Getters-------------------------------------------------------------------------

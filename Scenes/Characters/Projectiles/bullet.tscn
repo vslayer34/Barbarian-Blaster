@@ -30,6 +30,7 @@ top_level = true
 script = ExtResource("1_q0kpg")
 BulletLifeSpan = NodePath("LifeTime")
 _direction = Vector3(0, 0, 1)
+_speed = 10.0
 
 [node name="BulletBody" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_nnl3p")
