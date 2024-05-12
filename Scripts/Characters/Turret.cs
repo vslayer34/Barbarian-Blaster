@@ -29,7 +29,7 @@ public partial class Turret : Node3D
     }
 
 
-    // Member Methods------------------------------------------------------------------------------
+    // Signal Methods------------------------------------------------------------------------------
     private void OnShotInterval_Timeout()
     {
         _newBullet = BulletScene.Instantiate() as Bullet;

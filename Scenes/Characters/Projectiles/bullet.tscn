@@ -24,10 +24,11 @@ height = 0.08
 radius = 0.072
 height = 0.245
 
-[node name="Bullet" type="Area3D"]
+[node name="Bullet" type="Area3D" node_paths=PackedStringArray("BulletLifeSpan")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0746518)
 top_level = true
 script = ExtResource("1_q0kpg")
+BulletLifeSpan = NodePath("LifeTime")
 _direction = Vector3(0, 0, 1)
 
 [node name="BulletBody" type="MeshInstance3D" parent="."]
@@ -41,3 +42,7 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0366449, -1.6018e-09)
 shape = SubResource("CapsuleShape3D_i8g1v")
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
